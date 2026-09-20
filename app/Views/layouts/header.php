@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>MyBad</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg?v=3">
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
@@ -10,7 +11,7 @@
 <header>
     <nav>
         <div class="logo">
-            <a href="/"><img src="/assets/img/logo.png" alt="MyBad Logo"></a>
+            <a href="/" class="logo-text"><span class="bracket">[</span>MYBAD<span class="bracket">]</span></a>
         </div>
 
         <ul class="nav-links">

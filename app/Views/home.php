@@ -11,6 +11,8 @@
     <a href="/add">Ajouter une excuse</a>
 </div>
 
+<script src="/assets/js/home.js"></script>
+
 <footer>
     <p>Mathis Marissal</p>
     <p>2026 - MyBad</p>
