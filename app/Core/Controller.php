@@ -7,16 +7,10 @@ class Controller
     // puis inclut le fichier de vue demandé (ex: 'home' ou 'excuses/all')
     protected function render(string $view, array $data = []): void
     {
-        // Transforme chaque clé de $data en variable utilisable directement dans la vue
-        // ex: $data = ['message' => 'PHP'] devient une variable $message
         extract($data);
-
-        // Header commun à toutes les pages
         include __DIR__ . '/../Views/layouts/header.php';
-
-        // Construit le chemin du fichier de vue à partir de son nom
-        // ex: 'excuses/all' -> .../app/Views/excuses/all.php
         include __DIR__ . '/../Views/' . $view . '.php';
+        echo '</body></html>';
     }
 
     // Renvoie une réponse JSON : utilisé par les controllers de l'API (ExcuseApiController)
@@ -27,4 +21,5 @@ class Controller
         echo json_encode($data);
         exit; // on coupe l'exécution ici pour être sûr que rien d'autre ne s'ajoute à la réponse
     }
+    
 }
