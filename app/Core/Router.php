@@ -33,6 +33,12 @@ class Router {
             return;
         }
 
+        if ($method === 'GET' && count($segments) === 4 && $segments[1] === 'api' && $segments[2] === 'excuses' && is_numeric($segments[3])) {
+            $controller = new ExcuseApiController();
+            $controller->detail($segments[3]);
+            return;
+        }
+
         // Toutes les autres routes : comparaison exacte, comme sur ZenTea
         foreach ($this->routes as $route) {
             if ($route['method'] === $method && $route['path'] === $url) {
