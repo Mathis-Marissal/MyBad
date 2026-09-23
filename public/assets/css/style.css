@@ -327,6 +327,11 @@ footer {
     color: var(--accent);
 }
 
+.error-page .btn {
+    display: inline-block;
+    margin-top: 20px;
+}
+
 .error-page img {
     max-width: 320px;
     margin: 24px auto;

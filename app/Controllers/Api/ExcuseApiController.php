@@ -53,12 +53,21 @@ class ExcuseApiController extends Controller {
             return;
         }
 
-        $stmt = $this->pdo->prepare('INSERT INTO excuses (http_code, tag, message) VALUES (:http_code, :tag, :message)');
-        $stmt->execute([
-            'http_code' => $httpCode,
-            'tag' => $tag,
-            'message' => $message
-        ]);
+        // try/catch comme dans Database.php : si l'INSERT échoue (ex: http_code déjà
+        // utilisé, contrainte UNIQUE en BDD), on attrape l'erreur au lieu de planter,
+        // et on renvoie une réponse JSON propre plutôt que l'erreur PHP brute.
+        try {
+            $stmt = $this->pdo->prepare('INSERT INTO excuses (http_code, tag, message) VALUES (:http_code, :tag, :message)');
+            $stmt->execute([
+                'http_code' => $httpCode,
+                'tag' => $tag,
+                'message' => $message
+            ]);
+        } catch (PDOException $e) {
+            $this->json(['error' => 'Ce code HTTP existe déjà'], 400);
+            return;
+        }
+
         $this->json(['success' => true, 'message' => 'Excuse created successfully'], 201);
     }
 
