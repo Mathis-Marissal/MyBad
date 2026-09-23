@@ -201,37 +201,48 @@ footer {
     border-top: 1px solid var(--border);
 }
 
-/* ==== Formulaire (page /add) ==== */
+/* ==== Formulaire (page /add) ====
+   Fond noir franc sur les champs, texte blanc, une ligne label+input par champ,
+   alignement à gauche (contrairement au bloc .excuse-generator qui est centré) */
 
-form label {
-    display: block;
-    margin-top: 16px;
-    margin-bottom: 6px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
+#add-form {
     text-align: left;
 }
 
-form input {
+#add-form label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+}
+
+#add-form label:first-of-type {
+    margin-top: 0;
+}
+
+#add-form input {
+    display: block;
     width: 100%;
-    padding: 10px 12px;
-    background-color: var(--bg);
+    padding: 12px 14px;
+    background-color: #000000;
     border: 1px solid var(--border);
     border-radius: 4px;
-    color: var(--text);
+    color: #ffffff;
     font-family: inherit;
     font-size: 14px;
 }
 
-form input:focus {
+#add-form input:focus {
     outline: none;
     border-color: var(--accent);
 }
 
-form button {
-    margin-top: 24px;
+#add-form button {
+    margin-top: 28px;
+    width: 100%;
 }
 
 /* ==== Toast (confirmation d'ajout) ==== */
@@ -253,36 +264,56 @@ form button {
     display: block;
 }
 
-/* ==== Tableau (page /excuses/all) ==== */
+/* ==== Tableau (page /excuses/all) ====
+   Encadré comme une carte, en-tête + liens dans les couleurs accent du site */
 
 .excuses-table {
     width: 100%;
     max-width: 800px;
     margin: 20px auto 60px;
     border-collapse: collapse;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
 }
 
-.excuses-table th,
+.excuses-table thead {
+    background-color: #000000;
+    border-bottom: 2px solid var(--accent);
+}
+
+.excuses-table th {
+    padding: 14px 16px;
+    text-align: left;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+}
+
 .excuses-table td {
-    padding: 12px 16px;
+    padding: 14px 16px;
     text-align: left;
     border-bottom: 1px solid var(--border);
     font-size: 14px;
 }
 
-.excuses-table th {
-    color: var(--text-muted);
-    text-transform: uppercase;
-    font-size: 12px;
-    letter-spacing: 0.05em;
+.excuses-table tbody tr:last-child td {
+    border-bottom: none;
 }
 
-.excuses-table tr:hover {
-    background-color: var(--surface);
+.excuses-table tbody tr:hover {
+    background-color: rgba(232, 163, 61, 0.08);
 }
 
 .excuses-table td a {
     color: var(--accent);
+    font-weight: 700;
+}
+
+.excuses-table td a:hover {
+    text-decoration: underline;
 }
 
 /* ==== Page 404 ==== */
