@@ -31,8 +31,7 @@ class PageController extends Controller {
         $excuse = $stmt->fetch();
 
         if (!$excuse) {
-            http_response_code(404);
-            $this->render('errors/404');
+            $this->notFound();
             return;
         }
 
@@ -41,6 +40,12 @@ class PageController extends Controller {
 
     public function add(): void {
         $this->render('excuses/add');
+    }
+
+    // Appelée pour toute route inconnue (Router) ou tout http_code introuvable (detail())
+    public function notFound(): void {
+        http_response_code(404);
+        $this->render('errors/404');
     }
 
 }

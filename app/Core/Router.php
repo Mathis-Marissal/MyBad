@@ -48,7 +48,8 @@ class Router {
             }
         }
 
-        http_response_code(404);
-        echo '404 - Page non trouvée';
+        // Aucune route ne correspond : vraie page 404 (avec le GIF et la redirection)
+        $controller = new PageController();
+        $controller->notFound();
     }
 }

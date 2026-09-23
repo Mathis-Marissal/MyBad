@@ -200,3 +200,105 @@ footer {
     font-size: 13px;
     border-top: 1px solid var(--border);
 }
+
+/* ==== Formulaire (page /add) ==== */
+
+form label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    text-align: left;
+}
+
+form input {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+}
+
+form input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+form button {
+    margin-top: 24px;
+}
+
+/* ==== Toast (confirmation d'ajout) ==== */
+
+#toast {
+    display: none;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    padding: 14px 20px;
+    background-color: var(--surface);
+    border: 1px solid var(--accent);
+    color: var(--text);
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#toast.show {
+    display: block;
+}
+
+/* ==== Tableau (page /excuses/all) ==== */
+
+.excuses-table {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto 60px;
+    border-collapse: collapse;
+}
+
+.excuses-table th,
+.excuses-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+}
+
+.excuses-table th {
+    color: var(--text-muted);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+}
+
+.excuses-table tr:hover {
+    background-color: var(--surface);
+}
+
+.excuses-table td a {
+    color: var(--accent);
+}
+
+/* ==== Page 404 ==== */
+
+.error-page {
+    padding-top: 60px;
+}
+
+.error-page h1 {
+    font-size: 64px;
+    color: var(--accent);
+}
+
+.error-page img {
+    max-width: 320px;
+    margin: 24px auto;
+    border-radius: 4px;
+    display: block;
+}
