@@ -181,7 +181,7 @@ button:hover,
     display: block;
     margin-top: 20px;
     font-size: 13px;
-    color: var(--text-muted);
+    color: var(--text);
 }
 
 .excuse-generator a:hover {
@@ -337,4 +337,73 @@ footer {
     margin: 24px auto;
     border-radius: 4px;
     display: block;
+}
+
+/* ==== Formulaire de modification (page /excuses/{code}/edit) ====
+   Même style que le formulaire d'ajout */
+
+#edit-form {
+    text-align: left;
+}
+
+#edit-form label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+}
+
+#edit-form label:first-of-type {
+    margin-top: 0;
+}
+
+#edit-form input {
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    background-color: #000000;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+#edit-form input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+#edit-form input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#edit-form button {
+    margin-top: 28px;
+    width: 100%;
+}
+
+/* ==== Ajustements finaux ==== */
+
+/* Le lien "Ajouter une excuse" doit ressembler à un vrai bouton, pas à un lien discret
+   (la règle .excuse-generator a le rend discret par défaut pour les autres liens) */
+.excuse-generator .btn {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.excuse-generator .btn:hover {
+    background-color: var(--text);
+    color: var(--bg);
+}
+
+/* Toute la ligne du tableau est cliquable (voir all.js) */
+.excuses-table tbody tr {
+    cursor: pointer;
 }

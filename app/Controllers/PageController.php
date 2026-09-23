@@ -42,6 +42,19 @@ class PageController extends Controller {
         $this->render('excuses/add');
     }
 
+    public function edit(int $httpCode): void {
+        $stmt = $this->pdo->prepare('SELECT * FROM excuses WHERE http_code = :http_code');
+        $stmt->execute(['http_code' => $httpCode]);
+        $excuse = $stmt->fetch();
+
+        if (!$excuse) {
+            $this->notFound();
+            return;
+        }
+
+        $this->render('excuses/edit', ['excuse' => $excuse]);
+    }
+
     // Appelée pour toute route inconnue (Router) ou tout http_code introuvable (detail())
     public function notFound(): void {
         http_response_code(404);

@@ -8,7 +8,7 @@
     <p id="excuse-code"><?= $excuse['http_code'] ?> — <?= $excuse['tag'] ?></p>
     <p id="excuse-message"><?= $excuse['message'] ?></p>
     <button id="change-excuse">Changer d'excuse</button>
-    <a href="/add">Ajouter une excuse</a>
+    <a href="/add" class="btn">Ajouter une excuse</a>
 </div>
 
 <script src="/assets/js/home.js"></script>

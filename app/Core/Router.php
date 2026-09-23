@@ -33,9 +33,23 @@ class Router {
             return;
         }
 
+        // Cas particulier : /excuses/701/edit
+        if ($method === 'GET' && count($segments) === 4 && $segments[1] === 'excuses' && is_numeric($segments[2]) && $segments[3] === 'edit') {
+            $controller = new PageController();
+            $controller->edit($segments[2]);
+            return;
+        }
+
         if ($method === 'GET' && count($segments) === 4 && $segments[1] === 'api' && $segments[2] === 'excuses' && is_numeric($segments[3])) {
             $controller = new ExcuseApiController();
             $controller->detail($segments[3]);
+            return;
+        }
+
+        // Cas particulier : POST /api/excuses/701 (modification)
+        if ($method === 'POST' && count($segments) === 4 && $segments[1] === 'api' && $segments[2] === 'excuses' && is_numeric($segments[3])) {
+            $controller = new ExcuseApiController();
+            $controller->update($segments[3]);
             return;
         }
 

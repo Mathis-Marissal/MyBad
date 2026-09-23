@@ -53,9 +53,6 @@ class ExcuseApiController extends Controller {
             return;
         }
 
-        // try/catch comme dans Database.php : si l'INSERT échoue (ex: http_code déjà
-        // utilisé, contrainte UNIQUE en BDD), on attrape l'erreur au lieu de planter,
-        // et on renvoie une réponse JSON propre plutôt que l'erreur PHP brute.
         try {
             $stmt = $this->pdo->prepare('INSERT INTO excuses (http_code, tag, message) VALUES (:http_code, :tag, :message)');
             $stmt->execute([
@@ -69,6 +66,27 @@ class ExcuseApiController extends Controller {
         }
 
         $this->json(['success' => true, 'message' => 'Excuse created successfully'], 201);
+    }
+
+    // Modifie le tag/message d'une excuse existante (le http_code ne change pas,
+    // c'est lui qui identifie l'excuse dans l'URL)
+    public function update(int $httpCode): void {
+        $tag = $_POST['tag'] ?? null;
+        $message = $_POST['message'] ?? null;
+
+        if (!$tag || !$message) {
+            $this->json(['error' => 'Missing required fields'], 400);
+            return;
+        }
+
+        $stmt = $this->pdo->prepare('UPDATE excuses SET tag = :tag, message = :message WHERE http_code = :http_code');
+        $stmt->execute([
+            'tag' => $tag,
+            'message' => $message,
+            'http_code' => $httpCode
+        ]);
+
+        $this->json(['success' => true, 'message' => 'Excuse updated successfully'], 200);
     }
 
 }
